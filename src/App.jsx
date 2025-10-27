@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -8,13 +8,40 @@ import About from './Pages/About'
 import Contact from './Pages/Contact'
 import Products from './Pages/Products'
 import Cart from './Pages/Cart'
+import Navbar from './components/Navbar'
+import axios from 'axios'
+
 
 function App() {
+  const [location, setLocation] = useState('')
+  const [openDropdown,setDropdown] = useState(false)
+  const getLocation = async () => {
+    navigator.geolocation.getCurrentPosition(async pos => {
+      const { latitude, longitude } = pos.coords
+      // console.log(latitude,longitude);
+      const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
 
+      try {
+        const location = await axios.get(url)
+        const exactLocation = location.data.address
+        setLocation(exactLocation)
+         setDropdown(false)
+        console.log(exactLocation);
 
+      } catch (error) {
+        console.log(error);
+
+      }
+
+    })
+  }
+  useEffect(() => {
+    getLocation()
+  },[])
   return (
     <>
       <BrowserRouter>
+        <Navbar location={location} getLocation={getLocation} openDropdown={openDropdown} setDropdown={setDropdown}/>
         <Routes>
           <Route path='/' element={<Home />}></Route>
           <Route path='/about' element={<About />}></Route>
