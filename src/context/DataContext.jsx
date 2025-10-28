@@ -44,3 +44,5 @@ export const DataProvider = ({ children }) => {
     </DataContext.Provider>
 }
 
+export const getData =()=> useContext(DataContext)
+

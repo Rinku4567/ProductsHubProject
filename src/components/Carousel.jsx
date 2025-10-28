@@ -1,12 +1,13 @@
 import React, { useContext } from 'react'
 import { useEffect } from 'react'
-import { DataContext} from '../context/DataContext'
+import { DataContext, getData} from '../context/DataContext'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import Category from './Category';
 
 const Carousel = () => {
-    const { data ,fetchAllProducts} = useContext(DataContext)
+    const { data ,fetchAllProducts} = getData()
        console.log(data);
 
         var settings = {
@@ -49,6 +50,7 @@ const Carousel = () => {
 
 
             </Slider>
+            <Category/>
 
     </>
   )
