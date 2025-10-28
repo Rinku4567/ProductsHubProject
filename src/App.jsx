@@ -10,6 +10,7 @@ import Products from './Pages/Products'
 import Cart from './Pages/Cart'
 import Navbar from './components/Navbar'
 import axios from 'axios'
+import Footer from './components/Footer'
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
           <Route path='/Products' element={<Products />}></Route>
           <Route path='/Cart' element={<Cart />}></Route>
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </>
   )
