@@ -20,10 +20,14 @@ export const DataProvider = ({ children }) => {
             
             // store products data in that object 
             const productsData= res.data
+            // const productsData= res.data.products
+            
             // it updates the data state using fetchedproducts data
             //  console.log(res);
             
             setData(productsData)
+            // console.log(res.data.products);
+            
             
             
            
@@ -36,10 +40,20 @@ export const DataProvider = ({ children }) => {
         }
     }
 
+    const getUniqueCategory = (data, property) => {
+            let newVal = data?.map((curElem) => {
+                return curElem[property]
+            })
+            newVal = ["All",...new Set(newVal)]
+            return newVal
+        }
+    
+        const categoryOnlyData = getUniqueCategory(data, "category")
+
     
     // It waraps the children component inside a context Provider This allows any child component to consume the context values: data, setData, and fetchAllProducts.This is how you make global state available throughout your app.
     //  Means without passing the props,  the children component of DataProvider component can access the all values globally- data , setData, fetchAllProducts
-    return <DataContext.Provider value={{ data, setData,fetchAllProducts  }}>
+    return <DataContext.Provider value={{ data, setData,fetchAllProducts ,categoryOnlyData }}>
         {children}
     </DataContext.Provider>
 }

@@ -2,16 +2,8 @@ import React from 'react'
 import { getData } from '../context/DataContext'
 
 const Category = () => {
-  const {data} = getData()
-  const getUniqueCategory = (data, property) => {
-            let newVal = data?.map((curElem) => {
-                return curElem[property]
-            })
-            newVal = [...new Set(newVal)]
-            return newVal
-        }
-    
-        const categoryOnlyData = getUniqueCategory(data, "category")
+  const {categoryOnlyData} = getData()
+  
 
   return (
     <>
