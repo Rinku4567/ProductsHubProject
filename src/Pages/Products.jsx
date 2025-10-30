@@ -3,6 +3,7 @@ import { getData } from '../context/DataContext'
 import FilterSection from '../components/FilterSection'
 import loading from '../assets/loading.mp4'
 import ProductCard from '../components/ProductCard'
+import notfound from '../assets/nodatafound.mp4'
 
 const Products = () => {
   const { data, fetchAllProducts } = getData()
@@ -15,32 +16,33 @@ const Products = () => {
   const [priceRange, setPriceRange] = useState([0, 1000])
 
   const handleCategoryChange = (e) => {
-   setPage(1)
+    setPage(1)
     setCategory(e.target.value)
   }
 
   let filteredData = data?.filter((item) =>
     item.title.toLowerCase().includes(search.toLowerCase()) &&
     (category === "All" || item.category === category) &&
-    (item.price >= priceRange[0]) && item.price <= priceRange[1]
-    
+    (item.price >= priceRange[0] && item.price <= priceRange[1])
+
   )
-  console.log("Ruby");
-  
-  // console.log(filteredData.length);
-  
+
+
+
 
   const pageNextHandler = () => {
-   
-      setPage(page => page + 1)
-    
+
+    setPage(page => page + 1)
+
   }
 
   const pagePreviousHandler = () => {
-    
-      setPage(page => page - 1)
-    
+
+    setPage(page => page - 1)
+
   }
+
+
 
   // const pageHandler
 
@@ -60,30 +62,47 @@ const Products = () => {
                 <FilterSection search={search} setSearch={setSearch} category={category} setCategory={setCategory} priceRange={priceRange} setPriceRange={setPriceRange} handleCategoryChange={handleCategoryChange} />
                 <div className='grid grid-cols-3 gap-7 mt-10 '>
                   {
-                    filteredData?.slice(page * 6 - 6, page * 6).map((pro, index) => {
-                      return <ProductCard key={index} product={pro} />
-                    })
+                    filteredData.length > 0 ?
+                      filteredData?.slice(page * 6 - 6, page * 6).map((pro, index) => {
+                        return <ProductCard key={index} product={pro} length={length} />
+                      }) :
+                      <div className=" ms-[200px] w-full mt-10  flex flex-col items-center justify-center">
+                        <h1 className="text-2xl font-bold text-center whitespace-nowrap">
+                          No Products Available
+                        </h1>
+
+                        <video
+                          muted
+                          autoPlay
+                          loop
+                          className="w-[500px] h-[300px] object-cover"
+                        >
+                          <source src={notfound} type="video/mp4" />
+                        </video>
+                      </div>
+
+
                   }
 
                 </div>
 
               </div>
 
-             
-                  <div className='flex mx-auto justify-center items-center mt-5'>
-                    <button
-                     disabled={page===1} 
-                     className={`${page===1? " bg-red-300  cursor-not-allowed" :  "bg-red-500 cursor-pointer"} p-2 text-white rounded-[10px] m-2 `} onClick={pagePreviousHandler} >Previous</button>
-                    
-                    <button 
-                    disabled={page>filteredData.length/6} 
-                    className={`${page>=filteredData.length/6? " bg-red-300  cursor-not-allowed" :  "bg-red-500 cursor-pointer"} p-2 text-white rounded-[10px] m-2 `} 
-                     onClick={pageNextHandler}>Next</button>
-                  </div> 
+              {filteredData.length > 0 ?
+                <div className='flex mx-auto justify-center items-center mt-5'>
+                  <button
+                    disabled={page === 1}
+                    className={`${page === 1 ? " bg-red-300  cursor-not-allowed" : "bg-red-500 cursor-pointer"} p-2 text-white rounded-[10px] m-2 `} onClick={pagePreviousHandler} >Previous</button>
 
-                  <div></div>
-              
+                  <button
+                    disabled={page > filteredData.length / 6}
+                    className={`${page >= filteredData.length / 6 ? " bg-red-300  cursor-not-allowed" : "bg-red-500 cursor-pointer"} p-2 text-white rounded-[10px] m-2 `}
+                    onClick={pageNextHandler}>Next</button>
+                </div> :
 
+                <div></div>
+
+              }
 
             </div>
 
