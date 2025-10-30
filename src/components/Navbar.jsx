@@ -5,9 +5,27 @@ import { Link } from 'react-router-dom'
 import { IoCartOutline } from 'react-icons/io5'
 import { NavLink } from 'react-router-dom'
 import { CgClose } from 'react-icons/cg'
+import { MdOutlineLightMode,MdOutlineDarkMode } from 'react-icons/md'
+import { useState } from 'react'
 
 const Navbar = ({ location,getLocation, openDropdown, setDropdown }) => {
+const [mode, setMode] = useState('light')
 
+
+    const toggleMode = () => {
+        if (mode === 'dark') {
+            document.body.style.backgroundColor = 'white'
+            setMode('light')
+
+        } else {
+            document.body.style.backgroundColor = '#042743'
+            setMode('dark')
+
+ 
+        }
+
+    }
+   
     const toggleDropDown = () => {
         setDropdown(!openDropdown)
     }
@@ -37,6 +55,11 @@ const Navbar = ({ location,getLocation, openDropdown, setDropdown }) => {
 
                     {/* menu section */}
                     <nav className='md:flex gap-7 '>
+                         <div onClick={toggleMode} className='mt-2  rounded-2xl'>
+                            {mode === 'dark' ?
+                                <MdOutlineLightMode className='h-7 cursor-pointer  w-7 text-white ' /> : <MdOutlineDarkMode className='h-7 cursor-pointer  w-7  text-white' />
+                            }
+                        </div>
                         <ul className='flex gap-4 font-bold items-center'>
                             <NavLink to={'/'} className={({ isActive }) => `${isActive ? "border-b-2 transition-all border-red-500" : "text-black"} cursor-pointer text-white`}><li>Home</li></NavLink>
                             <NavLink to={'/about'} className={({ isActive }) => `${isActive ? "border-b-2 transition-all border-red-500" : "text-black"} cursor-pointer text-white`} ><li className='cursor-pointer'>About</li></NavLink>
