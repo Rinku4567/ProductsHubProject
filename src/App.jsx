@@ -11,6 +11,7 @@ import Cart from './Pages/Cart'
 import Navbar from './components/Navbar'
 import axios from 'axios'
 import Footer from './components/Footer'
+import SingleProduct from './Pages/SingleProduct'
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
           <Route path='/about' element={<About />}></Route>
           <Route path='/contact' element={<Contact />}></Route>
           <Route path='/Products' element={<Products />}></Route>
+          <Route path='/Products/:id' element={<SingleProduct />}></Route>
           <Route path='/Cart' element={<Cart />}></Route>
         </Routes>
         <Footer/>

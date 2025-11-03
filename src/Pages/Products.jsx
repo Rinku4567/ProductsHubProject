@@ -64,7 +64,7 @@ const Products = () => {
                   {
                     filteredData.length > 0 ?
                       filteredData?.slice(page * 6 - 6, page * 6).map((pro, index) => {
-                        return <ProductCard key={index} product={pro} length={length} />
+                        return <ProductCard key={index} product={pro} />
                       }) :
                       <div className=" ms-[200px] w-full mt-10  flex flex-col items-center justify-center">
                         <h1 className="text-2xl font-bold text-center whitespace-nowrap">
