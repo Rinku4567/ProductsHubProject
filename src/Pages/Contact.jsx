@@ -8,7 +8,7 @@ const Contact = () => {
     <>
 
       <div className="relative flex justify-end items-start mt-10 ">
-        <div className=' absolute flex flex-col right-175'>
+        <div className=' absolute flex flex-col right-200'>
           <div className='flex flex-rows gap-4  w-[500px] '>
 
             <div className='bg-black w-[250px] h-[200px] mt-10 rounded-[5px]'>
@@ -35,7 +35,7 @@ const Contact = () => {
             </div>
           
         </div>
-        <div className=" w-[700px] h-[500px] bg-amber-300 me-10">
+        <div className=" w-[700px] h-[500px] bg-amber-300 me-40">
           <h1 className='text-4xl font-bold text-center mt-20'>Contact us</h1>
           <form action="" className='mt-5'>
             <input type="text" placeholder='Enter your name' className=' bg-white p-2 ms-26 w-[550px] border-2' /><br /><br />

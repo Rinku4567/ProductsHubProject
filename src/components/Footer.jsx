@@ -33,7 +33,7 @@ const Footer = () => {
                 </div>
 
                 <div className="map">
-                    <p className='px-24'><iframe className='border-4 border-white' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29449.817497398974!2d75.80594030985299!3d22.682585082428645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fc39062b9e61%3A0x4faed261a0ab936c!2sSector%20A%2C%20Surya%20Dev%20Nagar%2C%20Indore%2C%20Madhya%20Pradesh%20452009!5e0!3m2!1sen!2sin!4v1760691908410!5m2!1sen!2sin" width="350" height="250" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe></p>
+                    <p className='px-50'><iframe className='border-4 border-white' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29449.817497398974!2d75.80594030985299!3d22.682585082428645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fc39062b9e61%3A0x4faed261a0ab936c!2sSector%20A%2C%20Surya%20Dev%20Nagar%2C%20Indore%2C%20Madhya%20Pradesh%20452009!5e0!3m2!1sen!2sin!4v1760691908410!5m2!1sen!2sin" width="350" height="250" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe></p>
                 </div>
 
             </div>
