@@ -8,7 +8,7 @@ const Contact = () => {
     <>
 
       <div className="relative flex justify-end items-start mt-10 ">
-        <div className=' absolute flex flex-col right-200'>
+        <div className=' absolute flex flex-col right-200 '>
           <div className='flex flex-rows gap-4  w-[500px] '>
 
             <div className='bg-black w-[250px] h-[200px] mt-10 rounded-[5px]'>
