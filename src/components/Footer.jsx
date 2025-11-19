@@ -5,7 +5,7 @@ import { FaFacebook, FaInstagram } from 'react-icons/fa'
 const Footer = () => {
     return (
         <>
-            <div className='h-[300px] bg-[#0a131d] mt-5 flex flex-row pt-10 text-white'>
+            <div className='h-[330px] bg-[#0a131d] mt-5 flex flex-row pt-10 text-white'>
                 <div className="address px-30">
                     <h1 className='font-bold text-3xl'><span className='text-red-600 font-serif'>P</span><span className='text-white'>roducts</span><span className='text-red-600 font-serif'>H</span>< span className='text-white'>ub</span></h1>
                     <p>Product Hub is a best choice in Indore</p>
