@@ -1,9 +1,13 @@
 import React from 'react'
 import { IoCartOutline } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 const ProductCard = ({ product }) => {
     const navigate = useNavigate()
+    const {addToCart} = useCart()
+    
+    
     return (
         <>
 
@@ -13,7 +17,7 @@ const ProductCard = ({ product }) => {
                     <h1 className='line-clamp-2 p-1 font-semibold'> {product.title}</h1>
                     <p className='my-1 text-lg text-gray-800 font-bold p-1'>Price {product.price}$</p>
                 </div>
-                <button className='bg-red-500 mt-2 px-3 py-2 text-lg text-white w-full cursor-pointer flex gap-2 items-center justify-center font-semibold rounded-b-md'><IoCartOutline className='w-6 h-6' /> Add to cart </button>
+                <button onClick={()=>addToCart(product)} className='bg-red-500 mt-2 px-3 py-2 text-lg text-white w-full cursor-pointer flex gap-2 items-center justify-center font-semibold rounded-b-md' ><IoCartOutline className='w-6 h-6' /> Add to cart </button>
 
             </div>
 

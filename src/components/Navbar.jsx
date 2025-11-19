@@ -7,10 +7,11 @@ import { NavLink } from 'react-router-dom'
 import { CgClose } from 'react-icons/cg'
 import { MdOutlineLightMode,MdOutlineDarkMode } from 'react-icons/md'
 import { useState } from 'react'
+import { useCart } from '../context/CartContext'
 
 const Navbar = ({ location,getLocation, openDropdown, setDropdown }) => {
 const [mode, setMode] = useState('light')
-
+const {cartItem} = useCart()
 
     const toggleMode = () => {
         if (mode === 'dark') {
@@ -68,7 +69,7 @@ const [mode, setMode] = useState('light')
                         </ul>
                         <Link to={'/cart'} className='relative'>
                             <IoCartOutline className='h-7 w-7 text-white' />
-                            <span className='bg-red-500 px-2 rounded-full absolute -top-3 -right-3 text-white'>0</span>
+                            <span className='bg-red-500 px-2 rounded-full absolute -top-3 -right-3 text-white'>{cartItem.length}</span>
                         </Link>
 
                         <button className=' bg-red-500 px-4 py-1 rounded-[5px]  text-white cursor-pointer'>Sign in</button>
